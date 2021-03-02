@@ -27,6 +27,7 @@ const upload=multer({storage});
 const dbURL=process.env.DB_URL
 console.log(dbURL)
 const T='mongodb://localhost:27017/camp3'
+DB_URL='mongodb+srv://abdaal:wlnD8m8gCqcgv6Mt@cluster0.pnw91.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
 mongoose.connect(dbURL, {
     useNewUrlParser: true,
