@@ -35,6 +35,7 @@ mongoose.connect(dbURL, {
     useFindAndModify: false
 });
 
+const port=process.env.PORT||3000
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
@@ -207,6 +208,6 @@ app.delete('/campground/:id/reviews/:reviewsId',async (req,res)=>{
 
 
 
-app.listen(3000,(req,res)=>{
+app.listen(port,(req,res)=>{
     console.log("App has started")
 })
