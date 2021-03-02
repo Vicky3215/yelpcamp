@@ -1,0 +1,15 @@
+<% layout('layouts/boilerplate')%>
+
+<%if(currentUser){%>
+    <h1>CurrentUser is-<%=currentUser.username%></h1>
+
+<%}else{%>
+<h1>Nobody is loggedIn</h1>
+<%}%>
+
+<%for(let camp of campground){%>
+
+    <h3><%=camp.title%></h3>
+    <img src="<%=camp.image%>"><br>
+    <a href="/campground/<%=camp._id%>">show more</a>
+<%}%>

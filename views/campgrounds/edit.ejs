@@ -1,0 +1,18 @@
+<% layout ('layouts/boilerplate')%>
+
+<form action="/campground/<%=campground._id%>?_method=PUT" method="POST">
+
+    <label class="form-label" for="title">Title</label>
+    <input class="form-control" type="text" id="tite" name="campground[title]" value="<%=campground.title%>" required>
+    <label class="form-label" for="image">Image</label>
+    <input class="form-control" type="text" id="tite" name="campground[image]" value="<%=campground.image%>" required>
+    <label class="form-label" for="price">Price</label>
+    <input class="form-control" type="text" id="tite" name="campground[price]" value="<%=campground.price%>" required>
+    <label class="form-label" for="description">description</label>
+    <input class="form-control" type="text" id="tite" name="campground[description]" value="<%=campground.description%>" required>
+    <label class="form-label" for="location">Location</label>
+    <input class="form-control" type="text" id="tite" name="campground[location]" value="<%=campground.location%>" required>
+    
+    
+    <button>SUBMIT</button>
+</form>

@@ -1,0 +1,49 @@
+<% layout('layouts/boilerplate')%>
+
+
+
+<div class="container">
+ <div class="row">
+    <div class="col-sm-9">
+        <h1><%=campground.title%></h1>
+<h3><%=campground.location%></h3>
+<p><%=campground.description%></p>
+<img src="<%=campground.image%>"><br>
+<p>Created by-<%=campground.author.username%></p>
+<%if(currentUser && campground.author.equals(currentUser._id)){%>
+    <a href="/campground/<%=campground._id%>/edit" >EDIT</a>
+
+
+<form action="/campground/<%=campground._id%>?_method=DELETE" method="POST">
+    <button>DELETE</button>
+</form>
+<%}%>
+    </div>
+    <div class="col-sm-3">
+        <form action="/campground/<%=campground._id%>/reviews" method="POST">
+            <label class="form-label" for="rating">Rating</label>
+            <input class="form-range" type="range" min="1" max="5" name="review[rating]" id="rating">
+            <label class="form-label" for="body">Review</label>
+            <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
+
+
+            <button>SUBMIT</button>
+        </form>
+
+        <%for(let camp of campground.reviews){%>
+
+           
+               
+                 <p class="lead mt-0"><%=camp.rating%>--<%=camp.body%></p>
+            <%if(currentUser && camp.author.equals(currentUser._id)){%>
+                <form action="/campground/<%=campground._id%>/reviews/<%=camp._id%>?_method=DELETE" method="POST">
+                    <p>created by-<%=camp.author.username%></p>
+                      <button>DELETE</button>
+                 </form>
+            <%}%>
+          
+           
+        <%}%>
+    </div>
+ </div>
+</div>
